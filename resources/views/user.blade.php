@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'User')
 @section('main')
-<div class="container">
+
     <div class="card p-3 shadow mt-4">
         <div class="row">
             <div class="col-8">
@@ -12,14 +12,14 @@
                     @csrf
                     <div class="form-append d-flex">
                         <input type="text" name="keyword" class="form-control me-2">
-                        <button type="submit" class="btn btn-info">Search</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
         </div>
 
         <table class="table table-bordered">
-            <thead class="table-info">
+            <thead class="table-primary">
                 <tr>
                     <td>id</td>
                     <td>username</td>
@@ -53,4 +53,4 @@
             </tbody>
         </table>
     </div>
-</div>
+@endsection

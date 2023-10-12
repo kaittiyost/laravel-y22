@@ -22,6 +22,12 @@ class UserController extends Controller
     }
 
     public function loginForm(){
+        //session()->forget('user');
+        return view('login');
+    }
+
+    public function logout(){
+        session()->forget('user');
         return view('login');
     }
 
@@ -31,7 +37,7 @@ class UserController extends Controller
                     ->where('password' , $request->password)
                     ->first();
         if($user){
-            session()->push('user',$user);
+            session()->put('user',$user);
             return redirect('/');
         }else{
             return redirect('/login')->withErrors(['message'=>'Username and Password Incorrect!']);

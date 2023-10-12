@@ -2,26 +2,29 @@
 @section('title', 'Login')
 @section('main')
 
-<div class="container">
-    <div class="card p-3 mt-4 w-50 shadow ">
-        <h1>Login Page</h1>
-        @error('message')
-            <div class="alert alert-danger">
-                {{$message}}
+    <div class="row p-3 " style="margin-left:20%; margin-right:20%">
+
+            <div class="card p-4 mt-4 justify-content-center">
+                <h1 class="mb-3">Login Page</h1>
+                @error('message')
+                    <div class="alert alert-danger">
+                        {{$message}}
+                    </div>
+                @enderror
+                <form action="{{ url('/checkuser') }}" method="post">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Username</span>
+                        <input type="text"  name="username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Password</span>
+                        <input type="password"  name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Login</button>
+                </form>
             </div>
-        @enderror
-        <form action="{{ url('/checkuser') }}" method="post">
-            @csrf
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control" name="username">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-lg btn-info">Login</button>
-        </form>
+
     </div>
-</div>
+
 @endsection
