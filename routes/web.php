@@ -21,6 +21,7 @@ Route::middleware('CheckUser')->group(function(){
     Route::get('/game/create', [GameController::class,'create']);
     Route::post('/game/upload', [GameController::class,'upload']);
     Route::get('/game/play/{slug}', [GameController::class,'play']);
+    Route::get('/game/play/{slug}/delete', [GameController::class,'delete']);
 });
 
 Route::get('/login', [UserController::class,'loginForm']);

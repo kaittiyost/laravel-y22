@@ -28,8 +28,10 @@
 
                 <h3> <a href="{{url('/game/play/'.$game->slug)}}"> {{ $game->id.$game->title }}</a></h3>
                 <label for="">
-                    {{ $game->description }}
+                    {{ $game->description }} <br>
+                    by : {{ $game->user->username }}
                 </label>
+                <a href="{{url('/game/play/'.$game->slug.'/delete')}}">remove</a>
                 {{-- <label for="">SLUG : {{ $game->slug }}</label> --}}
                 {{-- <label for="">USER_ID : {{ $game->user_id }}</label> --}}
 

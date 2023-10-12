@@ -55,10 +55,27 @@ class GameController extends Controller
         } catch (Exception $e) {
             return redirect('/game/create')->withErrors('Error GameFile! :'.$e->getMessage());
         }
+        return redirect('/game');
     }
 
     public function play($slug){
         $game = Game::where('slug',$slug)->first();
         return view('game.play',compact('game'));
+    }
+
+    public function update($slug, Request $request){
+        $game = Game::where('slug', $slug)->first();
+
+        $game->title = $request->title;
+        $game->description = $request->description;
+        $game->slug = $request->slug;
+        $game->thumbnail = $request->thumbnail;
+
+    }
+
+    public function delete($slug){
+        Game::where('slug',$slug)->delete();
+        system('rd '.storage_path('app\\'.$slug." /S /Q"));
+        return redirect('/game');
     }
 }
